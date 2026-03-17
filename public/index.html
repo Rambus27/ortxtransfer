@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ortx Transfer</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <script src="theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" defer></script>
+  </head>
+  <body>
+    <div class="aurora"></div>
+    <main class="app-shell">
+      <section class="headline">
+        <p class="kicker">Fast transfer, no format limits</p>
+        <h1>Send files. Share link. Set expiry.</h1>
+        <p class="subtext">
+          Upload any file type and get a secure share link with your chosen expiration date.
+        </p>
+      </section>
+
+      <section class="panel" aria-label="Upload panel">
+        <form id="uploadForm" class="upload-form">
+          <div
+            id="dropZone"
+            class="drop-zone"
+            role="button"
+            tabindex="0"
+            aria-label="Drop files here or click to choose"
+          >
+            <input id="fileInput" name="files" type="file" multiple required class="drop-zone-input" />
+            <div class="drop-zone-content">
+              <span class="drop-zone-icon" aria-hidden="true">&#8682;</span>
+              <span class="drop-zone-label">Drop files here or <u>browse</u></span>
+              <span id="dropZoneFiles" class="drop-zone-files"></span>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>Expiration date</span>
+            <input id="expiresAt" name="expiresAt" type="datetime-local" required />
+          </label>
+
+          <label class="field">
+            <span>Password <span class="optional">(optional)</span></span>
+            <input id="passwordInput" name="password" type="password" autocomplete="new-password" placeholder="Leave blank for no password" />
+          </label>
+
+          <label class="field">
+            <span>Message to recipient <span class="optional">(optional)</span></span>
+            <textarea id="messageInput" name="message" rows="2" placeholder="Add a note for the recipient..."></textarea>
+          </label>
+
+          <button id="submitBtn" type="submit">Generate link</button>
+        </form>
+
+        <div id="status" class="status" aria-live="polite"></div>
+
+        <div id="uploadProgress" class="upload-progress hidden" aria-hidden="true">
+          <div class="upload-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Upload progress">
+            <div id="uploadProgressFill" class="upload-progress-fill"></div>
+          </div>
+          <p id="uploadProgressText" class="upload-progress-text">0%</p>
+          <p id="uploadEtaText" class="upload-eta">ETA: Calculating...</p>
+        </div>
+
+        <div id="result" class="result hidden">
+          <p class="result-label">Share this link</p>
+          <div class="result-row">
+            <input id="downloadLink" type="text" readonly />
+            <button id="copyBtn" type="button">Copy</button>
+          </div>
+          <p id="expiryText" class="expiry"></p>
+          <div id="qrCodeBox" class="qr-code-box" aria-label="QR code for share link"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js?v=20260316-features"></script>
+  </body>
+</html>

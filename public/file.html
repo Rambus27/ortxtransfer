@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ortx Transfer - File</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/file.css?v=20260316-features" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body>
+    <div class="aurora"></div>
+    <main class="app-shell">
+      <section class="headline">
+        <p class="kicker">Shared with Ortx Transfer</p>
+        <h1 id="fileName">Loading file...</h1>
+        <p id="fileMeta" class="file-meta"></p>
+      </section>
+
+      <section class="panel">
+        <!-- Password gate (shown when link is password-protected) -->
+        <div id="passwordGate" class="password-gate hidden">
+          <p class="password-gate-label">This transfer is password protected</p>
+          <form id="passwordGateForm" class="password-gate-form">
+            <input
+              id="gatePasswordInput"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Enter password"
+              required
+            />
+            <button type="submit" id="gateSubmitBtn">Unlock</button>
+          </form>
+          <p id="gateStatus" class="status" aria-live="polite"></p>
+        </div>
+
+        <!-- Message from sender -->
+        <div id="senderMessage" class="sender-message hidden">
+          <p class="sender-message-label">Message from sender</p>
+          <p id="senderMessageText" class="sender-message-text"></p>
+        </div>
+
+        <div id="fileList" class="file-list hidden"></div>
+
+        <div id="previewBox" class="preview-box">
+          <p class="preview-placeholder">Preparing preview...</p>
+          <div id="previewLoading" class="preview-loading hidden">
+            <div class="loading-spinner"></div>
+            <p id="previewEta" class="loading-eta">Estimating...</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="downloadBtn" type="button" class="download-btn">Download selected file</button>
+          <button id="downloadAllBtn" type="button" class="download-btn secondary-btn hidden">Download all</button>
+        </div>
+
+        <p id="pageStatus" class="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="/file.js?v=20260316-features"></script>
+  </body>
+</html>

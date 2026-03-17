@@ -1,0 +1,123 @@
+/* ── Theme toggle button ────────────────────────────────────────────── */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--mint);
+  border-color: var(--mint);
+  transform: rotate(45deg);
+}
+
+/* ── Theme panel ────────────────────────────────────────────────────── */
+.theme-panel {
+  position: fixed;
+  bottom: 5.2rem;
+  right: 1.5rem;
+  z-index: 999;
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.15rem 1rem;
+  min-width: 232px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.theme-panel.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+}
+
+.theme-panel-title {
+  margin: 0 0 0.9rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sun);
+}
+
+/* ── Swatches ───────────────────────────────────────────────────────── */
+.theme-swatches {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.theme-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 0.65rem;
+  padding: 0.45rem 0.5rem 0.4rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-family: "Space Grotesk", sans-serif;
+  min-width: 3rem;
+  line-height: 1;
+}
+
+.theme-swatch:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-swatch.active {
+  border-color: var(--mint);
+  color: var(--text);
+}
+
+.theme-swatch-dot {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .theme-panel {
+    bottom: 4.5rem;
+    right: 1rem;
+    left: 1rem;
+    min-width: 0;
+  }
+}
