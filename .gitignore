@@ -2,3 +2,9 @@ node_modules/
 uploads/
 data/links.json
 .env
+
+# Android build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
